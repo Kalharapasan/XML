@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<DataStore>
+    <University>
+        <Lecturers id="U001">
+            <Name>South Eastern University Of Sri Lanka</Name>
+            <Address>Unoversity Park Oluwil</Address>
+            <Rank>1</Rank>
+        </Lecturers>
+    </University>
+    <Bank>
+        <Customer id="C001">
+            <Name>Kalhara</Name>
+            <Address>No 180 DPlakndha</Address>
+            <Age>25</Age>
+        </Customer>
+    </Bank>
+    <Hospital>
+        <Patients id="P001">
+            <Name>Pasan Kalhara</Name>
+            <Age>25</Age>
+            <Address>NO 180 Dolakndha Dhehiaththakadiya</Address>
+            <BirthDay>2001.01.20</BirthDay>
+        </Patients>
+    </Hospital>
+</DataStore>
