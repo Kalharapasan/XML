@@ -23,74 +23,74 @@ Here are the most important syntax rules you should follow when writing XML docu
 
 - Every XML document must have a single root element that contains all other elements.
 
-	Example:
+Example:
 
-	```xml
-	<root>
-		<child>value</child>
-	</root>
-	```
+```xml
+<root>
+    <child>value</child>
+</root>
+```
 
 - XML documents can start with an optional XML prolog (recommended):
 
-	```xml
-	<?xml version="1.0" encoding="UTF-8"?>
-	```
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+```
 
 - All elements must have a closing tag (or be self-closing):
 
-	Correct:
+Correct:
 
-	```xml
-	<title>Harry Potter</title>
-	```
+```xml
+<title>Harry Potter</title>
+```
 
-	Self-closing:
+Self-closing:
 
-	```xml
-	<br />
-	```
+```xml
+<br />
+```
 
 - XML tags are case-sensitive. The opening and closing tag names must match exactly.
 
-	Correct:
+Correct:
 
-	```xml
-	<title>Harry Potter</title>
-	```
+```xml
+<title>Harry Potter</title>
+```
 
-	Incorrect (mismatched case):
+Incorrect (mismatched case):
 
-	```xml
-	<title>Harry Potter</Title> <!-- not allowed -->
-	```
+```xml
+<title>Harry Potter</Title> <!-- not allowed -->
+```
 
 - Elements must be properly nested.
 
-	Incorrect:
+Incorrect:
 
-	```xml
-	<b><i>This text is bold and italic</b></i> <!-- not allowed -->
-	```
+```xml
+<b><i>This text is bold and italic</b></i> <!-- not allowed -->
+```
 
-	Correct:
+Correct:
 
-	```xml
-	<b><i>This text is bold and italic</i></b>
-	```
+```xml
+<b><i>This text is bold and italic</i></b>
+```
 
 - Attribute values must always be quoted (single or double quotes):
 
-	```xml
-	<note date="2007-12-11">Remember this date</note>
-	```
+```xml
+<note date="2007-12-11">Remember this date</note>
+```
 
 - Use predefined entity references to represent special characters inside element content or attribute values:
 
-	- &amp;lt;  →  &lt;  (less-than)
-	- &amp;gt;  →  &gt;  (greater-than)
-	- &amp;amp; →  &amp;  (ampersand)
-	- &amp;apos; →  '  (apostrophe)
-	- &amp;quot; →  "  (quotation mark)
+- &amp;lt;  →  &lt;  (less-than)
+- &amp;gt;  →  &gt;  (greater-than)
+- &amp;amp; →  &amp;  (ampersand)
+- &amp;apos; →  '  (apostrophe)
+- &amp;quot; →  "  (quotation mark)
 
 These rules form the basis of well-formed XML. To be valid XML, a document must be well-formed and also conform to any schema (DTD, XSD) it declares.
