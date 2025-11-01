@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>XML removeChild() Example</title>
+    </head>
+    <body>
+
+        <h2>XML DOM Remove Child Example</h2>
+        <p id="XMLDOM"></p>
+
+        <script>
+            // Step 1: XML data
+            let text = `
+                <Bank>
+                    <Employee>
+                        <ID>673</ID>
+                        <Name>John Smith</Name>
+                        <Branch>Downtown</Branch>
+                        <Department>Customer</Department>
+                        <Position>Teller</Position>
+                    </Employee>
+                    <Employee>
+                        <ID>988</ID>
+                        <Name>Sarah Johnson</Name>
+                        <Branch>Uptown</Branch>
+                        <Department>Loans</Department>
+                        <Position>Loan Officer</Position>
+                    </Employee>
+                </Bank>`;
+
+            // Step 2: Parse XML
+            let parser = new DOMParser();
+            let xmlDoc = parser.parseFromString(text, "text/xml");
+
+            // Step 3: Get the root node <Bank>
+            var root = xmlDoc.documentElement;
+
+            // Step 4: Select the second employee
+            var currNode = root.childNodes[1]; // second Employee node
+
+            // Step 5: Remove a child node (for example, remove <Branch>)
+            var removedNode = currNode.removeChild(currNode.getElementsByTagName("Branch")[0]);
+
+            // Step 6: Show the result
+            document.getElementById("XMLDOM").innerHTML =
+                "Removed Node: " + removedNode.nodeName +
+                "<br>From Employee: " + currNode.getElementsByTagName("Name")[0].textContent;
+        </script>
+
+    </body>
+</html>
