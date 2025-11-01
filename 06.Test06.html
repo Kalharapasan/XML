@@ -7,58 +7,11 @@
 </head>
 <body>
     <table border="3" id="studentTable">
-        <tr>
-            <th>Name</th>
-            <th>Grade</th>
-            <th>Year</th>
-            <th>Address</th>
-        </tr>
+        
     </table>
 
     <script>
-        var text, parser, xmlDoc;
-        text = "<School>" +
-                    "<Student>" +
-                        "<Name>Pasan</Name>" +
-                        "<Grade>12B</Grade>" +
-                        "<Year>2001</Year>" +
-                        "<Addres>No 180 Dolakndha</Addres>" +
-                    "</Student>" +
-                    "<Student>" +
-                        "<Name>Thrushi</Name>" +
-                        "<Grade>11A</Grade>" +
-                        "<Year>2002</Year>" +
-                        "<Addres>Kubukkan Wawa Nirihanegama</Addres>" +
-                    "</Student>" +
-                    "<Student>" +
-                        "<Name>Nadhishana</Name>" +
-                        "<Grade>10A</Grade>" +
-                        "<Year>2000</Year>" +
-                        "<Addres>Rshnapure</Addres>" +
-                    "</Student>" +
-                "</School>";
-
-        parser = new DOMParser();
-        xmlDoc = parser.parseFromString(text, "text/xml");
-
-        var students = xmlDoc.getElementsByTagName("Student");
-        var table = document.getElementById("studentTable");
-
-        
-        for (var i = 0; i < students.length; i++) {
-            var name = students[i].getElementsByTagName("Name")[0].textContent.trim();
-            var grade = students[i].getElementsByTagName("Grade")[0].textContent.trim();
-            var year = students[i].getElementsByTagName("Year")[0].textContent.trim();
-            var address = students[i].getElementsByTagName("Addres")[0].textContent.trim();
-
-            var row = "<tr>" +
-                        "<td>" + name + "</td>" +
-                        "<td>" + grade + "</td>" +
-                        "<td>" + year + "</td>" +
-                        "<td>" + address + "</td>" +
-                      "</tr>";
-            table.innerHTML += row;
-        }
+     
 
     </script>
 </body>
