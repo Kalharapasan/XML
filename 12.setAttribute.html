@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>XML DOM Example</title>
+    </head>
+    <body>
+
+        <h2>XML DOM Attribute Example</h2>
+        <p id="XMLDOM"></p>
+
+        <script>
+            // Create XML string
+            let text = `
+                <Bank>
+                    <Employee>
+                        <ID>673</ID>
+                        <Name>John Smith</Name>
+                        <Branch>Downtown</Branch>
+                        <Department>Customer</Department>
+                        <Position>Teller</Position>
+                        <Specializations>Finance</Specializations>
+                        <Yesrs>8</Yesrs>
+                    </Employee>
+                    <Employee>
+                        <ID>988</ID>
+                        <Name>Sarah Johnson</Name>
+                        <Branch>Uptown</Branch>
+                        <Department>Loans</Department>
+                        <Position>Loan Officer</Position>
+                        <Specializations>Accounting</Specializations>
+                        <Yesrs>8</Yesrs>
+                    </Employee>
+                </Bank>`;
+
+            // Parse XML string
+            let parser = new DOMParser();
+            let xmlDoc = parser.parseFromString(text, "text/xml");
+
+            // Select all Employee elements
+            var x = xmlDoc.getElementsByTagName("Employee");
+
+            // Set an attribute to the first Employee element
+            x[0].setAttribute("category", "type");     // <-- first attribute
+            x[0].setAttribute("category", "Experienced"); // <-- overwrite previous value
+
+            // Get the attribute value
+            let txt = x[0].getAttribute("category");
+
+            // Display the result
+            document.getElementById("XMLDOM").innerHTML =
+                "Employee: " + x[0].getElementsByTagName("Name")[0].textContent +
+                "<br>Category: " + txt;
+        </script>
+
+    </body>
+</html>
