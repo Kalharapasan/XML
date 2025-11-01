@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Bank>
+    <Employee id="673">
+        <Name>John Smith</Name>
+        <Branch>Downtown</Branch>
+        <Department>Customer</Department>
+        <Position>Teller</Position>
+        <Specializations>Finance</Specializations>
+        <Yesrs>8</Yesrs>
+    </Employee>
+    <Employee id="988">
+        <Name>Sarah Johnson</Name>
+        <Branch>Uptown</Branch>
+        <Department>Loans</Department>
+        <Position>Loan Officer</Position>
+        <Specializations>Accounting</Specializations>
+        <Yesrs>8</Yesrs>
+    </Employee>
+    <Employee id="563">
+        <Name>David Lee</Name>
+        <Branch>Westide</Branch>
+        <Department>Investments</Department>
+        <Position>Financial Advisor</Position>
+        <Specializations>Investment Banking</Specializations>
+        <Yesrs>10</Yesrs>
+    </Employee>
+    <Employee id="983">
+        <Name>Emily Wong</Name>
+        <Branch>East End</Branch>
+        <Department>Risk Management</Department>
+        <Position>Risk Analyst</Position>
+        <Specializations>Economics</Specializations>
+        <Yesrs>6</Yesrs>
+    </Employee>
+    <Employee id="234">
+        <Name>Michacl Brown</Name>
+        <Branch>Nortside</Branch>
+        <Department>Operation</Department>
+        <Position>Operation Manager</Position>
+        <Specializations>Management</Specializations>
+        <Yesrs>12</Yesrs>
+    </Employee>
+    <Employee id="720">
+        <Name>Jennifer Chen</Name>
+        <Branch>Central</Branch>
+        <Department>IT</Department>
+        <Position>IT Specialist</Position>
+        <Specializations>Data Science</Specializations>
+        <Yesrs>7</Yesrs>
+    </Employee>
+    <Employee id="723">
+        <Name>Daniel Garcia</Name>
+        <Branch>Southside</Branch>
+        <Department>Marketing</Department>
+        <Position>Marketing Officer</Position>
+        <Specializations>Marketing</Specializations>
+        <Yesrs>4</Yesrs>
+    </Employee>
+</Bank>
