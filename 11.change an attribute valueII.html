@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>XML DOM Attribute Example</title>
+</head>
+<body>
+
+<h2>Employee Attribute Example (XML DOM)</h2>
+<div id="XMLDOM"></div>
+
+<script>
+// Step 1: Define XML content
+let xmlText = `
+<Bank>
+    <Employee>
+        <ID>673</ID>
+        <Name>John Smith</Name>
+        <Branch>Downtown</Branch>
+        <Department>Customer</Department>
+        <Position>Teller</Position>
+        <Specializations>Finance</Specializations>
+        <Yesrs>8</Yesrs>
+    </Employee>
+    <Employee>
+        <ID>988</ID>
+        <Name>Sarah Johnson</Name>
+        <Branch>Uptown</Branch>
+        <Department>Loans</Department>
+        <Position>Loan Officer</Position>
+        <Specializations>Accounting</Specializations>
+        <Yesrs>8</Yesrs>
+    </Employee>
+    <Employee>
+        <ID>563</ID>
+        <Name>David Lee</Name>
+        <Branch>Westside</Branch>
+        <Department>Investments</Department>
+        <Position>Financial Advisor</Position>
+        <Specializations>Investment Banking</Specializations>
+        <Yesrs>10</Yesrs>
+    </Employee>
+</Bank>`;
+
+// Step 2: Parse the XML string
+let parser = new DOMParser();
+let xmlDoc = parser.parseFromString(xmlText, "text/xml");
+
+// Step 3: Get all <Employee> elements
+let employees = xmlDoc.getElementsByTagName("Employee");
+
+// Step 4: Add attributes for each employee
+employees[0].setAttribute("category", "Full-Time");
+employees[1].setAttribute("category", "Part-Time");
+employees[2].setAttribute("category", "Contract");
+
+// Step 5: Prepare output
+let output = "<table border='1' cellpadding='8'><tr><th>Name</th><th>Department</th><th>Category</th></tr>";
+
+for (let i = 0; i < employees.length; i++) {
+    let name = employees[i].getElementsByTagName("Name")[0].textContent;
+    let dept = employees[i].getElementsByTagName("Department")[0].textContent;
+    let category = employees[i].getAttribute("category");
+
+    output += `<tr><td>${name}</td><td>${dept}</td><td>${category}</td></tr>`;
+}
+
+output += "</table>";
+
+// Step 6: Display in HTML
+document.getElementById("XMLDOM").innerHTML = output;
+</script>
+
+</body>
+</html>
