@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>XML removeChild() - Text Node Example</title>
+    </head>
+    <body>
+
+        <h2>XML DOM Remove Text Node Example</h2>
+        <p id="XMLDOM"></p>
+
+        <script>
+            // Step 1: Define XML
+            let text = `
+                        <Bank>
+                            <Employee>
+                                <ID>673</ID>
+                                <Name>John Smith</Name>
+                                <Branch>Downtown</Branch>
+                            </Employee>
+                        </Bank>`;
+
+            // Step 2: Parse the XML
+            let parser = new DOMParser();
+            let xmlDoc = parser.parseFromString(text, "text/xml");
+
+            // Step 3: Select the <Name> element
+            var x = xmlDoc.getElementsByTagName("Name")[0];
+
+            // Step 4: Count how many child nodes (usually 1 text node)
+            let txt = "Before removing:<br>Child nodes: " + x.childNodes.length + "<br>";
+
+            // Step 5: Remove the text node inside <Name>
+            var y = x.childNodes[0]; // the text node ("John Smith")
+            x.removeChild(y);
+
+            // Step 6: Count child nodes again
+            txt += "After removing:<br>Child nodes: " + x.childNodes.length + "<br>";
+
+            // Step 7: Display result
+            document.getElementById("XMLDOM").innerHTML = txt;
+        </script>
+
+    </body>
+</html>
