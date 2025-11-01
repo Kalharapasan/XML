@@ -46,69 +46,71 @@
 
     <script>
         var text, parser, xmlDoc;
-        text = "<Employee>"+
-                    "<ID>673</ID>"+
-                    "<Name>John Smith</Name>"+
-                    "<Branch>Downtown</Branch>"+
-                    "<Department>Customer</Department>"+
-                    "<Position>Teller</Position>"+
-                    "<Specializations>Finance</Specializations>"+
-                    "<Yesrs>8</Yesrs>"+
-                "</Employee>"+
-                "<Employee>"+
-                    "<ID>988</ID>"+
-                    "<Name>Sarah Johnson</Name>"+
-                    "<Branch>Uptown</Branch>"+
-                    "<Department>Loans</Department>"+
-                    "<Position>Loan Officer</Position>"+
-                    "<Specializations>Accounting</Specializations>"+
-                    "<Yesrs>8</Yesrs>"+
-                "</Employee>"+
-                "<Employee>"+
-                    "<ID>563</ID>"+
-                    "<Name>David Lee</Name>"+
-                    "<Branch>Westide</Branch>"+
-                    "<Department>Investments</Department>"+
-                    "<Position>Financial Advisor</Position>"+
-                    "<Specializations>Investment Banking</Specializations>"+
-                    "<Yesrs>10</Yesrs>"+
-                "</Employee>"+
-                "<Employee>"+
-                    "<ID>983</ID>"+
-                    "<Name>Emily Wong</Name>"+
-                    "<Branch>East End</Branch>"+
-                    "<Department>Risk Management</Department>"+
-                    "<Position>Risk Analyst</Position>"+
-                    "<Specializations>Economics</Specializations>"+
-                    "<Yesrs>6</Yesrs>"+
-                "</Employee>"+
-                "<Employee>"+
-                    "<ID>234</ID>"+
-                    "<Name>Michacl Brown</Name>"+
-                    "<Branch>Nortside</Branch>"+
-                    "<Department>Operation</Department>"+
-                    "<Position>Operation Manager</Position>"+
-                    "<Specializations>Management</Specializations>"+
-                    "<Yesrs>12</Yesrs>"+
-               "</Employee>"+
-                "<Employee>"+
-                    "<ID>720</ID>"+
-                    "<Name>Jennifer Chen</Name>"+
-                    "<Branch>Central</Branch>"+
-                    "<Department>IT</Department>"+
-                    "<Position>IT Specialist</Position>"+
-                    "<Specializations>Data Science</Specializations>"+
-                    "<Yesrs>7</Yesrs>"+
-                "</Employee>"+
-                "<Employee>"+
-                    "<ID>723</ID>"+
-                    "<Name>Daniel Garcia</Name>"+
-                    "<Branch>Southside</Branch>"+
-                    "<Department>Marketing</Department>"+
-                    "<Position>Marketing Officer</Position>"+
-                    "<Specializations>Marketing</Specializations>"+
-                    "<Yesrs>4</Yesrs>"+
-                "</Employee>"
+        text = "<root>" + 
+                    "<Employee>"+
+                        "<ID>673</ID>"+
+                        "<Name>John Smith</Name>"+
+                        "<Branch>Downtown</Branch>"+
+                        "<Department>Customer</Department>"+
+                        "<Position>Teller</Position>"+
+                        "<Specializations>Finance</Specializations>"+
+                        "<Yesrs>8</Yesrs>"+
+                    "</Employee>"+
+                    "<Employee>"+
+                        "<ID>988</ID>"+
+                        "<Name>Sarah Johnson</Name>"+
+                        "<Branch>Uptown</Branch>"+
+                        "<Department>Loans</Department>"+
+                        "<Position>Loan Officer</Position>"+
+                        "<Specializations>Accounting</Specializations>"+
+                        "<Yesrs>8</Yesrs>"+
+                    "</Employee>"+
+                    "<Employee>"+
+                        "<ID>563</ID>"+
+                        "<Name>David Lee</Name>"+
+                        "<Branch>Westside</Branch>"+
+                        "<Department>Investments</Department>"+
+                        "<Position>Financial Advisor</Position>"+
+                        "<Specializations>Investment Banking</Specializations>"+
+                        "<Yesrs>10</Yesrs>"+
+                    "</Employee>"+
+                    "<Employee>"+
+                        "<ID>983</ID>"+
+                        "<Name>Emily Wong</Name>"+
+                        "<Branch>East End</Branch>"+
+                        "<Department>Risk Management</Department>"+
+                        "<Position>Risk Analyst</Position>"+
+                        "<Specializations>Economics</Specializations>"+
+                        "<Yesrs>6</Yesrs>"+
+                    "</Employee>"+
+                    "<Employee>"+
+                        "<ID>234</ID>"+
+                        "<Name>Michael Brown</Name>"+ 
+                        "<Branch>Northside</Branch>"+ 
+                        "<Department>Operations</Department>"+ 
+                        "<Position>Operations Manager</Position>"+ 
+                        "<Specializations>Management</Specializations>"+
+                        "<Yesrs>12</Yesrs>"+
+                    "</Employee>"+
+                    "<Employee>"+
+                        "<ID>720</ID>"+
+                        "<Name>Jennifer Chen</Name>"+
+                        "<Branch>Central</Branch>"+
+                        "<Department>IT</Department>"+
+                        "<Position>IT Specialist</Position>"+
+                        "<Specializations>Data Science</Specializations>"+
+                        "<Yesrs>7</Yesrs>"+
+                    "</Employee>"+
+                    "<Employee>"+
+                        "<ID>723</ID>"+
+                        "<Name>Daniel Garcia</Name>"+
+                        "<Branch>Southside</Branch>"+
+                        "<Department>Marketing</Department>"+
+                        "<Position>Marketing Officer</Position>"+
+                        "<Specializations>Marketing</Specializations>"+
+                        "<Yesrs>4</Yesrs>"+
+                    "</Employee>"+
+                "</root>"; 
 
         parser = new DOMParser();
         xmlDoc = parser.parseFromString(text, "text/xml");
@@ -116,15 +118,14 @@
         var employee = xmlDoc.getElementsByTagName("Employee");
         var table = document.getElementById("employeeTable");
 
-        
         for (var i = 0; i < employee.length; i++) {
             const id = employee[i].getElementsByTagName('ID')[0].textContent.trim();
-            const name = employee[i].getElementsByTagName('Name').textContent.trim();
-            const branch = employee[i].getElementsByTagName('Branch').textContent.trim();
-            const department = employee[i].getElementsByTagName('Department').textContent.trim();
-            const position = employee[i].getElementsByTagName('Position').textContent.trim();
-            const specialization = employee[i].getElementsByTagName('Specializations').textContent.trim();
-            const year = employee[i].getElementsByTagName('Yesrs').textContent.trim();
+            const name = employee[i].getElementsByTagName('Name')[0].textContent.trim(); 
+            const branch = employee[i].getElementsByTagName('Branch')[0].textContent.trim(); 
+            const department = employee[i].getElementsByTagName('Department')[0].textContent.trim(); 
+            const position = employee[i].getElementsByTagName('Position')[0].textContent.trim(); 
+            const specialization = employee[i].getElementsByTagName('Specializations')[0].textContent.trim(); 
+            const year = employee[i].getElementsByTagName('Yesrs')[0].textContent.trim(); 
 
             var row = "<tr>" +
                         "<td>"+id+"</td>"+
@@ -137,7 +138,6 @@
                       "</tr>";
             table.innerHTML += row;
         }
-
     </script>
 </body>
 </html>
