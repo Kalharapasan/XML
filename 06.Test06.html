@@ -4,25 +4,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test 06</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 20px; 
+            background-color: #f9f9f9;
+        }
+        table { 
+            border-collapse: collapse; 
+            width: 100%; 
+            background-color: white;
+        }
+        th, td { 
+            border: 2px solid #333; 
+            padding: 8px 12px; 
+            text-align: left; 
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 <body>
-    <table border="3" id="employeeTable">
+    <h2>Employee Details</h2>
+
+    <table id="employeeTable">
         <tr>
             <th>ID</th>
             <th>Name</th>
             <th>Branch</th>
-            <th>Departmet</th>
+            <th>Department</th>
             <th>Position</th>
-            <th>FSpecializationn</th>
+            <th>Specialization</th>
             <th>Year</th>
         </tr>
     </table>
 
     <script>
-        var paeser,xmlDoc;
-        paeser =new DOMParser();
-        xmlDoc = paeser.parseFromString("06.employee.xml","text/xml");
+        const table = document.getElementById("employeeTable");
+        const parser = new DOMParser();
 
+        fetch('06.employee.xml')
+            .then(response => response.text())
+            .then(xmlText => {
+                const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+                const employees = xmlDoc.getElementsByTagName('Employee');
+
+                for (let i = 0; i < employees.length; i++) {
+                    const emp = employees[i];
+                    const id = emp.getElementsByTagName('ID')[0]?.textContent.trim() || '';
+                    const name = emp.getElementsByTagName('Name')[0]?.textContent.trim() || '';
+                    const branch = emp.getElementsByTagName('Branch')[0]?.textContent.trim() || '';
+                    const department = emp.getElementsByTagName('Department')[0]?.textContent.trim() || '';
+                    const position = emp.getElementsByTagName('Position')[0]?.textContent.trim() || '';
+                    const specialization = emp.getElementsByTagName('Specializations')[0]?.textContent.trim() || '';
+                    const year = emp.getElementsByTagName('Yesrs')[0]?.textContent.trim() || '';
+
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${id}</td>
+                        <td>${name}</td>
+                        <td>${branch}</td>
+                        <td>${department}</td>
+                        <td>${position}</td>
+                        <td>${specialization}</td>
+                        <td>${year}</td>
+                    `;
+                    table.appendChild(row);
+                }
+            })
+            .catch(err => {
+                console.error('Failed to load or parse 06.employee.xml:', err);
+                const row = document.createElement('tr');
+                row.innerHTML = `<td colspan="7">Failed to load employee data.</td>`;
+                table.appendChild(row);
+            });
     </script>
 </body>
 </html>
