@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test 03</title>
+</head>
+<body>
+    <p id="txtNotice"></p>
+    <script>
+        var text,parser,xmlDoc;
+        text = "<bookStore> "+
+                    "<book>"+
+                        " <title> Everyday Italian </title> "+
+                        "<author>Giada De Laurentiis</author>"+
+                        " <year>2005</year>"+
+                    "</book> "+
+                "</bookStore> "
+        
+        parser =new DOMParser();
+        xmlDoc =parser.parseFromString(text,"text/xml");
+        document.getElementById("txtNotice").innerHTML =xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue;
+
+    </script>
+</body>
+</html>

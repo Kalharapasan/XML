@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test 04</title>
+</head>
+<body>
+    <table border="3">
+        <tr>
+            <th>Title</th>
+            <th>Auther</th>
+            <th>Year</th>
+        </tr>
+        <tr>
+            <td id="title"></td>
+            <td id="author"></td>
+            <td id="year"></td>
+        </tr>
+        
+    </table>
+    <script>
+        var text,parser,xmlDoc;
+        text = "<bookStore> "+
+                    "<book>"+
+                        " <title> Everyday Italian </title> "+
+                        "<author>Giada De Laurentiis</author>"+
+                        " <year>2005</year>"+
+                    "</book> "+
+                "</bookStore> "
+        
+        parser = new DOMParser();
+        xmlDoc = parser.parseFromString(text, "text/xml");
+
+        
+        var titleNode = xmlDoc.getElementsByTagName("title")[0];
+        var authorNode = xmlDoc.getElementsByTagName("author")[0];
+        var yearNode = xmlDoc.getElementsByTagName("year")[0];
+
+        document.getElementById("title").innerHTML = titleNode ? titleNode.textContent.trim() : "";
+        document.getElementById("author").innerHTML = authorNode ? authorNode.textContent.trim() : "";
+        document.getElementById("year").innerHTML = yearNode ? yearNode.textContent.trim() : "";
+
+    </script>
+</body>
+</html>
