@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>XML DOM Example</title>
+        <style>
+            body { font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4; }
+            #XMLDOM { background: #fff; padding: 15px; border-radius: 6px; box-shadow: 0 0 6px rgba(0,0,0,0.1); }
+            button { margin-top: 10px; padding: 8px 12px; cursor: pointer; }
+        </style>
+    </head>
+    <body>
+
+    <h2>XML DOM Attribute Example</h2>
+        <div id="XMLDOM"></div>
+
+        <script>
+            const xmlText = `
+                    <Bank>
+                        <Employee id="673" branch="Downtown">
+                            <Name lang="en">John Smith</Name>
+                            <Department>Customer</Department>
+                            <Position>Teller</Position>
+                        </Employee>
+                        <Employee id="988" branch="Uptown">
+                            <Name lang="en">Sarah Johnson</Name>
+                            <Department>Loans</Department>
+                            <Position>Loan Officer</Position>
+                        </Employee>
+                            <Employee id="563" branch="Westside">
+                                <Name lang="en">David Lee</Name>
+                                <Department>Investments</Department>
+                                <Position>Financial Advisor</Position>
+                        </Employee>
+                    </Bank>
+                `;
+
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(xmlText, "text/xml");
+
+            // Example 2: getAttributeNode() - get 'lang' attribute of first employee's Name
+            const firstName = xmlDoc.getElementsByTagName("Name")[0];
+            const langAttr = firstName.getAttributeNode("lang");
+            txt += "<b>Language Attribute (using getAttributeNode):</b><br>";
+            txt += "First employee Name lang = " + langAttr.nodeValue + "<br>";
+
+            document.getElementById("XMLDOM").innerHTML = txt;
+        </script>
+
+    </body>
+</html>
