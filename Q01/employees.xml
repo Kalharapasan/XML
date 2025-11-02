@@ -12,8 +12,8 @@
     <ID>988</ID>
     <Name>Sarah Johnson</Name>
     <Branch Department="Loans">Uptown</Branch>
-    <Position>Loan Officer</Position>
-    <Years>8</Years>
+    <Position>Senior Loan Officer</Position> <!-- Updated -->
+    <Years>9</Years> <!-- Updated -->
   </Employee>
 
   <Employee Specialization="Investment Banking">

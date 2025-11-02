@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ABC Bank Employee Records</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 20px auto;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background: #d1e0ff;
+        }
+    </style>
+</head>
+<body>
+
+<h2 style="text-align:center;">ABC Bank Employee Records</h2>
+
+<table id="employeeTable">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Branch</th>
+        <th>Department</th>
+        <th>Position</th>
+        <th>Specialization</th>
+        <th>Years</th>
+    </tr>
+</table>
+
+<script>
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "employees.xml", true);
+    xhr.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            displayEmployees(this);
+        }
+    };
+    xhr.send();
+
+    function displayEmployees(xml) {
+        var xmlDoc = xml.responseXML;
+        var employees = xmlDoc.getElementsByTagName("Employee");
+        var table = document.getElementById("employeeTable");
+
+        for (var i = 0; i < employees.length; i++) {
+            var row = table.insertRow(-1);
+
+            row.insertCell(0).innerHTML = employees[i].getElementsByTagName("ID")[0].childNodes[0].nodeValue;
+            row.insertCell(1).innerHTML = employees[i].getElementsByTagName("Name")[0].childNodes[0].nodeValue;
+            row.insertCell(2).innerHTML = employees[i].getElementsByTagName("Branch")[0].childNodes[0].nodeValue;
+            row.insertCell(3).innerHTML = employees[i].getElementsByTagName("Branch")[0].getAttribute("Department");
+            row.insertCell(4).innerHTML = employees[i].getElementsByTagName("Position")[0].childNodes[0].nodeValue;
+            row.insertCell(5).innerHTML = employees[i].getAttribute("Specialization");
+            row.insertCell(6).innerHTML = employees[i].getElementsByTagName("Years")[0].childNodes[0].nodeValue;
+        }
+    }
+</script>
+
+</body>
+</html>
