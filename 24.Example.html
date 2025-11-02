@@ -48,9 +48,9 @@
                     </book>
                     </bookstore>`;
 
-            // Parse the XML
+            // Parse the XML (trim leading/trailing whitespace so the XML prolog is at the start)
             var parser = new DOMParser();
-            var xmlDoc = parser.parseFromString(text, "text/xml");
+            var xmlDoc = parser.parseFromString(text.trim(), "text/xml");
             var txt = "";
 
             // ========== 4. Remove an element node ==========
@@ -109,8 +109,9 @@
             // Display all <title> values
             var titles = xmlDoc.getElementsByTagName("title");
             for (var i = 0; i < titles.length; i++) {
-            if (titles[i].childNodes[0])
-                txt += titles[i].childNodes[0].nodeValue + "<br>";
+                // Use textContent which is robust if a text node was removed earlier
+                var t = titles[i].textContent || "";
+                if (t.trim()) txt += t.trim() + "<br>";
             }
             document.getElementById("XMLDOM").innerHTML = txt;
         </script>
