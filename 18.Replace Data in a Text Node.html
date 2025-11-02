@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <body>
+
+    <h2>Replace Data in a Text Node Example</h2>
+
+    <p id="XMLDOM"></p>
+
+    <script>
+        var text = `
+                <Bank>
+                    <Employee>
+                        <ID>673</ID>
+                        <Name>John Smith</Name>
+                        <Branch>Downtown</Branch>
+                        <Department>Customer</Department>
+                        <Position>Teller</Position>
+                        <Specializations>Finance</Specializations>
+                        <Yesrs>8</Yesrs>
+                    </Employee>
+                </Bank>`;
+
+        // Parse XML string
+        var parser = new DOMParser();
+        var xmlDoc = parser.parseFromString(text, "text/xml");
+
+        // Get the text node inside the first <Name> element
+        var nameNode = xmlDoc.getElementsByTagName("Name")[0].childNodes[0];
+
+        // Display original name
+        document.getElementById("XMLDOM").innerHTML =
+            "Before replaceData(): " + nameNode.nodeValue + "<br>";
+
+        // Replace part of the name text
+        // Syntax: replaceData(offset, length, newString)
+        nameNode.replaceData(0, 10, "Michael Brown");
+
+        // Display modified name
+        document.getElementById("XMLDOM").innerHTML +=
+            "After replaceData(): " + nameNode.nodeValue;
+    </script>
+
+    </body>
+</html>
