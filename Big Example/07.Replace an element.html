@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<body><div id="out"></div>
+<script>
+var xhttp=new XMLHttpRequest();
+xhttp.onreadystatechange=function(){
+  if(this.readyState==4 && this.status==200) myFunc(this);
+};
+xhttp.open("GET","books.xml",true);
+xhttp.send();
+function myFunc(xml){
+  var xmlDoc = xml.responseXML;
+  var root = xmlDoc.documentElement;
+  var newNode = xmlDoc.createElement("book");
+  var newTitle = xmlDoc.createElement("title");
+  var newText = xmlDoc.createTextNode("A notebook");
+  newTitle.appendChild(newText);
+  newNode.appendChild(newTitle);
+  var old = xmlDoc.getElementsByTagName("book")[0];
+  root.replaceChild(newNode, old);
+  var titles = xmlDoc.getElementsByTagName("title");
+  var out = "";
+  for(var i=0;i<titles.length;i++) out += titles[i].childNodes[0].nodeValue + "<br>";
+  document.getElementById("out").innerHTML = out;
+}
+</script>
+</body>
+</html>
