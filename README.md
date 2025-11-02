@@ -149,10 +149,10 @@ Topic → Hospital Patients
 Deliverable
 
 - Create an XML file (for example, topic.xml) containing:
-  - A root element named appropriately for the chosen topic (e.g., <University>, <Bank>, or <Hospital>).
-  - At least two attributes on the root element (for example: id, campus, branch).
-  - At least two child elements with text content or further nested elements.
-  - At least one sub-child element (a nested element inside a child element).
+    - A root element named appropriately for the chosen topic (for example: `<University>`, `<Bank>`, or `<Hospital>`).
+    - At least two attributes on the root element (for example: id, campus, branch).
+    - At least two child elements with text content or further nested elements.
+    - At least one sub-child element (a nested element inside a child element).
 
 Sample XML skeletons
 
