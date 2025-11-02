@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+<p id="demo"></p>
+
+<script>
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        myFunction(this);
+    }
+};
+
+xhttp.open("GET", "books.xml", true);
+xhttp.send();
+
+function myFunction(xml) {
+    var x, xmlDoc, txt;
+
+    xmlDoc = xml.responseXML;
+    txt = "";
+
+    // Get the text node inside the first <title> element
+    x = xmlDoc.getElementsByTagName("title")[0].childNodes[0];
+
+    // Display original text
+    txt = x.nodeValue + "<br>";
+
+    // Replace text using nodeValue
+    x.nodeValue = "Easy Italian";
+
+    // Display updated text
+    txt += x.nodeValue;
+
+    document.getElementById("demo").innerHTML = txt;
+}
+</script>
+
+</body>
+</html>
