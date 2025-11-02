@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<body><div id="out"></div>
+<script>
+var xhttp=new XMLHttpRequest();
+xhttp.onreadystatechange=function(){
+  if(this.readyState==4 && this.status==200) myFunc(this);
+};
+xhttp.open("GET","books.xml",true);
+xhttp.send();
+function myFunc(xml){
+  var xmlDoc = xml.responseXML;
+  var t = xmlDoc.getElementsByTagName("title")[0].childNodes[0];
+  var before = t.nodeValue + "<br>";
+  t.insertData(0,"Easy ");
+  var after = t.nodeValue;
+  document.getElementById("out").innerHTML = before + after;
+}
+</script>
+</body>
+</html>
