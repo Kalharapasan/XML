@@ -32,3 +32,48 @@ function myFunction(xml) {
 
 </body>
 </html>
+
+<!-- 1. Get Attribute Value 
+
+txt = "";
+var x = xmlDoc.getElementsByTagName("book");
+for (i=0; i<x.length; i++){
+    // Method 1: Using getAttribute() to get the value directly
+    txt+= x[i].getAttribute("category") + "<br>";
+}
+document.getElementById("XMLDOM").innerHTML = txt;
+
+// OR
+
+var x = xmlDoc.getElementsByTagName("title")[0];
+// Method 2: Using getAttributeNode() to get the attribute object
+var y = x.getAttributeNode("lang");
+txt = y.nodeValue; // Then get the value from nodeValue
+document.getElementById("XMLDOM").innerHTML = txt; 
+
+2. Change an Attribute Value
+
+var x = xmlDoc.getElementsByTagName("book");
+x[0].setAttribute("category", "type"); 
+x[0].setAttribute("category", "Magical"); // Final change to the category attribute
+txt= x[0].getAttribute("category");
+document.getElementById("XMLDOM").innerHTML = txt;
+
+3. Remove an Element Node
+// 4. Remove an element node
+
+// The removeChild() method removes a specified node. When a node is removed, all its child nodes are also removed.
+var root = xmlDoc.documentElement;
+var currNode = root.childNodes[1];
+var removedNode = currNode.removeChild(currNode.childNodes[1]);
+document.getElementById("XMLDOM").innerHTML = "Removed Node: "+removedNode.nodeName;
+
+4. Remove a Text Node
+
+// 5. Remove a text node
+var x = xmlDoc.getElementsByTagName("title")[0];
+txt += "Child nodes: "+x.childNodes.length+"<br>"; // Count before removal
+var y = x.childNodes[0];
+x.removeChild(y);
+txt1 += "Child nodes: "+x.childNodes.length; // Count after removal 
+-->
