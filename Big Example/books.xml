@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bookstore>
+  <book category="Entertainment">
+    <title lang="En">Harry Potter</title>
+    <Author>JK. Rowling</Author>
+    <Year>2009</Year>
+    <Price>$45.99</Price>
+  </book>
+
+  <book category="Fiction">
+    <title lang="En">Avengers</title>
+    <Author>Warner Bros</Author>
+    <Year>2010</Year>
+    <Price>$32.89</Price>
+  </book>
+
+  <book category="Mysery">
+    <title lang="Sp">The Great Gatsby</title>
+    <Author>F Scott Fitzgerald</Author>
+    <Year>1920</Year>
+    <Price>$1.99</Price>
+  </book>
+
+  <book category="Historical">
+    <title lang="Fr">Things Fall Apart</title>
+    <Author>Chinua Achebe</Author>
+    <Year>1958</Year>
+    <Price>$12.99</Price>
+  </book>
+
+  <book category="Tragedy">
+    <title lang="Es">Hamlet</title>
+    <Author>William Shakespeare</Author>
+    <Year>1601</Year>
+    <Price>$24.99</Price>
+  </book>
+</bookstore>
