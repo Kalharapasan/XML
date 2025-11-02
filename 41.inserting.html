@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+<p id="demo"></p>
+
+<script>
+var xhttp = new XMLHttpRequest();
+
+xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+        myFunction(this);
+    }
+};
+
+xhttp.open("GET", "books.xml", true);
+xhttp.send();
+
+function myFunction(xml) {
+    var xmlDoc = xml.responseXML;
+
+    // Create new node <book>
+    var newNode = xmlDoc.createElement("book");
+
+    // Reference to root element
+    var x = xmlDoc.documentElement;
+
+    // List of existing <book> elements
+    var y = xmlDoc.getElementsByTagName("book");
+
+    // Show count BEFORE inserting
+    document.getElementById("demo").innerHTML =
+        "Book elements before: " + y.length + "<br>";
+
+    // Insert the new node before the 4th <book> (index 3)
+    x.insertBefore(newNode, y[3]);
+
+    // Update count AFTER inserting
+    document.getElementById("demo").innerHTML +=
+        "Book elements after: " + y.length;
+}
+</script>
+
+</body>
+</html>
