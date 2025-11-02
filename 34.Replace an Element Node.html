@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+<p id="demo"></p>
+
+<script>
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        myFunction(this);
+    }
+};
+
+xhttp.open("GET", "books.xml", true);
+xhttp.send();
+
+function myFunction(xml) {
+    var x, y, z, i, newNode, newTitle, newText, xmlDoc, txt;
+    xmlDoc = xml.responseXML;
+    txt = "";
+
+    x = xmlDoc.documentElement;
+
+    // Create a new <book> element, a <title> element, and a text node
+    newNode = xmlDoc.createElement("book");
+    newTitle = xmlDoc.createElement("title");
+    newText = xmlDoc.createTextNode("A Notebook");
+
+    // Add the text to the title node
+    newTitle.appendChild(newText);
+
+    // Add the title node to the new book node
+    newNode.appendChild(newTitle);
+
+    // Get the first existing <book> element
+    y = xmlDoc.getElementsByTagName("book")[0];
+
+    // Replace the first <book> with the new one
+    x.replaceChild(newNode, y);
+
+    // Output all titles after replacement
+    z = xmlDoc.getElementsByTagName("title");
+
+    for (i = 0; i < z.length; i++) {
+        txt += z[i].childNodes[0].nodeValue + "<br>";
+    }
+
+    document.getElementById("demo").innerHTML = txt;
+}
+</script>
+
+</body>
+</html>
+
+<!-- 1. Get an Attribute Value
+txt = "";
+var x = xmlDoc.getElementsByTagName("book");
+for (i=0; i<x.length; i++){
+    // Method 1: Using getAttribute()
+    txt+= x[i].getAttribute("category") + "<br>";
+}
+document.getElementById("XMLDOM").innerHTML = txt;
+
+// OR
+
+var x = xmlDoc.getElementsByTagName("title")[0];
+// Method 2: Using getAttributeNode()
+var y = x.getAttributeNode("lang");
+txt = y.nodeValue;
+document.getElementById("XMLDOM").innerHTML = txt;
+
+2. Change an Attribute Value
+var x = xmlDoc.getElementsByTagName("book");
+x[0].setAttribute("category", "type"); //  (Intermediate or placeholder step)
+x[0].setAttribute("category", "Magical"); // Sets the final value
+txt= x[0].getAttribute("category");
+document.getElementById("XMLDOM").innerHTML = txt;
+
+3. Remove Nodes
+// 4. Remove an element node
+// The removeChild() method removes a specified node. When a node is removed, all its child nodes are also removed.
+var root = xmlDoc.documentElement;
+var currNode = root.childNodes[1];
+var removedNode = currNode.removeChild(currNode.childNodes[1]);
+document.getElementById("XMLDOM").innerHTML = "Removed Node: "+removedNode.nodeName;
+
+Remove a Text Node
+
+// 5. Remove a text node
+var x = xmlDoc.getElementsByTagName("title")[0];
+txt += "Child nodes: "+x.childNodes.length+"<br>";
+var y = x.childNodes[0];
+x.removeChild(y);
+txt1 += "Child nodes: "+x.childNodes.length;
+
+
+Remove an Attribute node
+// 6. Remove an attribute node
+// The removeAttribute() method removes an attribute node by its name.
+
+var x = xmlDoc.getElementsByTagName("book");
+document.getElementById("XMLDOM").innerHTML = 
+x[1].getAttribute("category")+"<br>"; // Display before removal
+x[1].removeAttribute("category"); // Remove the attribute
+document.getElementById("XMLDOM").innerHTML += x[1].getAttribute("category"); // Display after removal (will be empty)
+
+4. Replace an Element Node
+
+// 7. Replace an element.
+var x = xmlDoc.documentElement;
+
+//creating a book element, title element and a text node
+var newNode = xmlDoc.createElement("book");
+var newTitle = xmlDoc.createElement("title");
+var newText = xmlDoc.createTextNode("A notebook");
+
+//add a text node to the title node
+newTitle.appendChild(newText);
+
+//add title node to the book node
+newNode.appendChild(newTitle);
+
+var y = xmlDoc.getElementsByTagName("book")[0];
+// Replace the old book (y) with the new book (newNode) within the root element (x)
+x.replaceChild(newNode, y); 
+var z = xmlDoc.getElementsByTagName("title");
+
+for (i=0; i<z.length; i++){
+    txt += z[i].childNodes[0].nodeValue+"<br>";
+}
+document.getElementById("XMLDOM").innerHTML = txt; -->
