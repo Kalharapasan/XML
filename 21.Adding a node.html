@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <body>
+
+    <h2>Adding a Node Example</h2>
+
+    <p id="XMLDOM"></p>
+
+    <script>
+        var text = `
+                <Bank>
+                    <Employee>
+                        <ID>673</ID>
+                        <Name>John Smith</Name>
+                        <Branch>Downtown</Branch>
+                        <Department>Customer</Department>
+                        <Position>Teller</Position>
+                        <Specializations>Finance</Specializations>
+                        <Yesrs>8</Yesrs>
+                    </Employee>
+                </Bank>`;
+
+        // Parse XML string
+        var parser = new DOMParser();
+        var xmlDoc = parser.parseFromString(text, "text/xml");
+
+        // Create a new element <Bonus>
+        var newElement = xmlDoc.createElement("Bonus");
+
+        // Append <Bonus> to the first <Employee>
+        var x = xmlDoc.getElementsByTagName("Employee")[0];
+        x.appendChild(newElement);
+
+        // Display all child element names under <Employee>
+        var xlen = x.childNodes.length;
+        var y = x.firstChild;
+        var txt = "";
+
+        for (var i = 0; i < xlen; i++) {
+            if (y.nodeType == 1) { // ELEMENT_NODE
+                txt += y.nodeName + "<br>";
+            }
+            y = y.nextSibling;
+        }
+
+        document.getElementById("XMLDOM").innerHTML = txt;
+    </script>
+
+    </body>
+</html>
