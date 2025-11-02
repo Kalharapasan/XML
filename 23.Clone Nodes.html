@@ -2,7 +2,7 @@
 <html>
     <body>
 
-    <h2>Insert a Node – insertBefore() Example</h2>
+    <h2>Clone Node Example</h2>
 
     <p id="XMLDOM"></p>
 
@@ -33,41 +33,24 @@
         var parser = new DOMParser();
         var xmlDoc = parser.parseFromString(text, "text/xml");
 
-        // Create a new <Employee> element
-        var newNode = xmlDoc.createElement("Employee");
+        // Get the first <Employee> element
+        var x = xmlDoc.getElementsByTagName("Employee")[0];
 
-        // Create sub-elements
-        var newID = xmlDoc.createElement("ID");
-        newID.appendChild(xmlDoc.createTextNode("555"));
+        // Clone it (true = clone all children)
+        var clon = x.cloneNode(true);
 
-        var newName = xmlDoc.createElement("Name");
-        newName.appendChild(xmlDoc.createTextNode("Michael White"));
+        // Append the cloned employee to the root <Bank>
+        xmlDoc.documentElement.appendChild(clon);
 
-        // Add sub-elements to new <Employee>
-        newNode.appendChild(newID);
-        newNode.appendChild(newName);
+        // Display all employee names to verify the clone
+        var y = xmlDoc.getElementsByTagName("Name");
+        var txt = "";
 
-        // Get root <Bank> and all <Employee> nodes
-        var bank = xmlDoc.documentElement;
-        var employees = xmlDoc.getElementsByTagName("Employee");
-
-        // Display employee count before insertion
-        document.getElementById("XMLDOM").innerHTML =
-            "Employee elements before: " + employees.length + "<br>";
-
-        // Insert the new <Employee> before the second one
-        bank.insertBefore(newNode, employees[1]);
-
-        // Display employee count after insertion
-        document.getElementById("XMLDOM").innerHTML +=
-            "Employee elements after: " + employees.length + "<br><br>";
-
-        // List all employee names
-        var allNames = xmlDoc.getElementsByTagName("Name");
-        for (var i = 0; i < allNames.length; i++) {
-            document.getElementById("XMLDOM").innerHTML +=
-                (i + 1) + ". " + allNames[i].childNodes[0].nodeValue + "<br>";
+        for (var i = 0; i < y.length; i++) {
+            txt += y[i].childNodes[0].nodeValue + "<br>";
         }
+
+        document.getElementById("XMLDOM").innerHTML = txt;
     </script>
 
     </body>
