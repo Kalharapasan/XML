@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+<p id="demo"></p>
+
+<script>
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        myFunction(this);
+    }
+};
+
+xhttp.open("GET", "books.xml", true);
+xhttp.send();
+
+function myFunction(xml) {
+    var x, xmlDoc, txt;
+
+    xmlDoc = xml.responseXML;
+
+    // Get the first child text node of the first <title> element
+    x = xmlDoc.getElementsByTagName("title")[0].childNodes[0];
+
+    txt = "Value: " + x.nodeValue + "<br>";
+
+    // Change the value of the text node
+    x.nodeValue = "";
+
+    txt += "Value: " + x.nodeValue;
+
+    document.getElementById("demo").innerHTML = txt;
+}
+</script>
+
+</body>
+</html>
