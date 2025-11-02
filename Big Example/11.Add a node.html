@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<body><div id="out"></div>
+<script>
+var xhttp=new XMLHttpRequest();
+xhttp.onreadystatechange=function(){
+  if(this.readyState==4 && this.status==200) myFunc(this);
+};
+xhttp.open("GET","books.xml",true);
+xhttp.send();
+function myFunc(xml){
+  var xmlDoc = xml.responseXML;
+  var newElement = xmlDoc.createElement("edition");
+  var book = xmlDoc.getElementsByTagName("book")[0];
+  book.appendChild(newElement);
+  var xlen = book.childNodes.length;
+  var y = book.firstChild;
+  var txt = "";
+  for (var i=0;i<xlen;i++){
+    if (y.nodeType==1) txt += y.nodeName + "<br>";
+    y = y.nextSibling;
+  }
+  document.getElementById("out").innerHTML = txt;
+}
+</script>
+</body>
+</html>
