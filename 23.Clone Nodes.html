@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <body>
+
+    <h2>Insert a Node – insertBefore() Example</h2>
+
+    <p id="XMLDOM"></p>
+
+    <script>
+        var text = `
+                <Bank>
+                    <Employee>
+                        <ID>673</ID>
+                        <Name>John Smith</Name>
+                        <Branch>Downtown</Branch>
+                        <Department>Customer</Department>
+                        <Position>Teller</Position>
+                        <Specializations>Finance</Specializations>
+                        <Yesrs>8</Yesrs>
+                    </Employee>
+                    <Employee>
+                        <ID>988</ID>
+                        <Name>Sarah Johnson</Name>
+                        <Branch>Uptown</Branch>
+                        <Department>Loans</Department>
+                        <Position>Loan Officer</Position>
+                        <Specializations>Accounting</Specializations>
+                        <Yesrs>8</Yesrs>
+                    </Employee>
+                </Bank>`;
+
+        // Parse XML string
+        var parser = new DOMParser();
+        var xmlDoc = parser.parseFromString(text, "text/xml");
+
+        // Create a new <Employee> element
+        var newNode = xmlDoc.createElement("Employee");
+
+        // Create sub-elements
+        var newID = xmlDoc.createElement("ID");
+        newID.appendChild(xmlDoc.createTextNode("555"));
+
+        var newName = xmlDoc.createElement("Name");
+        newName.appendChild(xmlDoc.createTextNode("Michael White"));
+
+        // Add sub-elements to new <Employee>
+        newNode.appendChild(newID);
+        newNode.appendChild(newName);
+
+        // Get root <Bank> and all <Employee> nodes
+        var bank = xmlDoc.documentElement;
+        var employees = xmlDoc.getElementsByTagName("Employee");
+
+        // Display employee count before insertion
+        document.getElementById("XMLDOM").innerHTML =
+            "Employee elements before: " + employees.length + "<br>";
+
+        // Insert the new <Employee> before the second one
+        bank.insertBefore(newNode, employees[1]);
+
+        // Display employee count after insertion
+        document.getElementById("XMLDOM").innerHTML +=
+            "Employee elements after: " + employees.length + "<br><br>";
+
+        // List all employee names
+        var allNames = xmlDoc.getElementsByTagName("Name");
+        for (var i = 0; i < allNames.length; i++) {
+            document.getElementById("XMLDOM").innerHTML +=
+                (i + 1) + ". " + allNames[i].childNodes[0].nodeValue + "<br>";
+        }
+    </script>
+
+    </body>
+</html>
