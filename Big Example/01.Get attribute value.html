@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<body>
+  <div id="out"></div>
+<script>
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+  if (this.readyState==4 && this.status==200) myFunction(this);
+};
+xhttp.open("GET","books.xml",true);
+xhttp.send();
+
+function myFunction(xml) {
+  var xmlDoc = xml.responseXML;
+  var books = xmlDoc.getElementsByTagName("book");
+  var out = "";
+  for (var i=0;i<books.length;i++){
+    out += books[i].getAttribute("category") + "<br>";
+  }
+  document.getElementById("out").innerHTML = out;
+}
+</script>
+</body>
+</html>
