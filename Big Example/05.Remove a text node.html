@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<body><div id="out"></div>
+<script>
+var xhttp=new XMLHttpRequest();
+xhttp.onreadystatechange=function(){
+  if(this.readyState==4 && this.status==200) myFunc(this);
+};
+xhttp.open("GET","books.xml",true);
+xhttp.send();
+function myFunc(xml){
+  var xmlDoc = xml.responseXML;
+  var title = xmlDoc.getElementsByTagName("title")[0];
+  var before = "Child nodes before: " + title.childNodes.length + "<br>";
+  var textNode = title.childNodes[0]; // the text node
+  title.removeChild(textNode);
+  var after = "Child nodes after: " + title.childNodes.length;
+  document.getElementById("out").innerHTML = before + after;
+}
+</script>
+</body>
+</html>
