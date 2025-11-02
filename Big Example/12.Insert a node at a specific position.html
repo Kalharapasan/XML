@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<body><div id="out"></div>
+<script>
+var xhttp=new XMLHttpRequest();
+xhttp.onreadystatechange=function(){
+  if(this.readyState==4 && this.status==200) myFunc(this);
+};
+xhttp.open("GET","books.xml",true);
+xhttp.send();
+function myFunc(xml){
+  var xmlDoc = xml.responseXML;
+  var newBook = xmlDoc.createElement("book");
+  var root = xmlDoc.documentElement;
+  var books = xmlDoc.getElementsByTagName("book");
+  var beforeCount = books.length;
+  root.insertBefore(newBook, books[3]); // insert before 4th (index 3)
+  var afterCount = xmlDoc.getElementsByTagName("book").length;
+  document.getElementById("out").innerHTML = "Before: " + beforeCount + "<br>After: " + afterCount;
+}
+</script>
+</body>
+</html>
