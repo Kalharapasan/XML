@@ -49,3 +49,11 @@ x[0].setAttribute("category", "Magical");
 txt= x[0].getAttribute("category");
 document.getElementById("XMLDOM").innerHTML = txt; -->
 
+<!-- 3. Remove an Element Node -->
+<!-- // 4. Remove an element node
+
+// The removeChild() method removes a specified node. When a node is removed, all its child nodes are also removed.
+var root = xmlDoc.documentElement;
+var currNode = root.childNodes[1];
+var removedNode = currNode.removeChild(currNode.childNodes[1]);
+document.getElementById("XMLDOM").innerHTML = "Removed Node: "+removedNode.nodeName; -->
